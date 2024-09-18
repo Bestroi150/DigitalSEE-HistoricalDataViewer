@@ -3,11 +3,38 @@ import json
 import folium
 from streamlit_folium import folium_static
 
+# Configure the page and theme
+st.set_page_config(
+    page_title="DigitalSEE: Academic Visualization",
+    page_icon="🎓",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
+
+# Apply custom CSS for further academic styling
+st.markdown("""
+    <style>
+    body {
+        font-family: 'Georgia', serif;
+        background-color: #F9F9F9;
+        color: #333333;
+    }
+    .stApp {
+        background-color: #F9F9F9;
+    }
+    .stSidebar {
+        background-color: #FFFFFF;
+    }
+    h1, h2, h3, h4, h5, h6 {
+        font-family: 'Georgia', serif;
+        color: #2C3E50;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 def app():
-    st.set_page_config(page_title="DigitalSEE", layout="wide")
-    
-    st.title("🌍 DigitalSEE: Visualize Cultural Data")
-    
+    st.title("🎓 DigitalSEE: Academic Visualization")
+
     # Load JSON data
     try:
         with open('EN.json', 'r', encoding='utf-8') as file:
@@ -17,19 +44,19 @@ def app():
         st.stop()
 
     # Sidebar: File selection
-    st.sidebar.header("File Selection")
+    st.sidebar.header("📁 File Selection")
     filenames = [entry['filename'] for entry in data]
     selected_file = st.sidebar.selectbox("Select a file to visualize", filenames)
-    
+
     # Filter the selected entry
     selected_entry = next(item for item in data if item['filename'] == selected_file)
     site_object = selected_entry['content']['siteObject']
 
     # Author and general information
-    st.header("🖋️ Author & Publication Details")
+    st.header("📖 Author & Publication Details")
     st.markdown(f"**Author:** `{site_object['author']}`")
     st.markdown(f"**Publication:** `{site_object['authorPublication']}`")
-    
+
     col1, col2 = st.columns(2)
     col1.markdown(f"**Original Language:** `{site_object['originalLanguage']['#text']}` "
                   f"({site_object['originalLanguage']['@xml:lang']})")
