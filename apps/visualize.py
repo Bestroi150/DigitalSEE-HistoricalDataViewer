@@ -11,27 +11,6 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Apply custom CSS for further academic styling
-st.markdown("""
-    <style>
-    body {
-        font-family: 'Georgia', serif;
-        background-color: #F9F9F9;
-        color: #333333;
-    }
-    .stApp {
-        background-color: #F9F9F9;
-    }
-    .stSidebar {
-        background-color: #FFFFFF;
-    }
-    h1, h2, h3, h4, h5, h6 {
-        font-family: 'Georgia', serif;
-        color: #2C3E50;
-    }
-    </style>
-""", unsafe_allow_html=True)
-
 def app():
     st.title("🎓 DigitalSEE: Academic Visualization")
 
@@ -54,19 +33,19 @@ def app():
 
     # Author and general information
     st.header("📖 Author & Publication Details")
-    st.markdown(f"**Author:** `{site_object['author']}`")
-    st.markdown(f"**Publication:** `{site_object['authorPublication']}`")
+    st.write(f"**Author:** {site_object['author']}")
+    st.write(f"**Publication:** {site_object['authorPublication']}")
 
     col1, col2 = st.columns(2)
-    col1.markdown(f"**Original Language:** `{site_object['originalLanguage']['#text']}` "
-                  f"({site_object['originalLanguage']['@xml:lang']})")
-    col2.markdown(f"**Publication Language:** `{site_object['publicationLanguage']['#text']}` "
-                  f"({site_object['publicationLanguage']['@xml:lang']})")
+    col1.write(f"**Original Language:** {site_object['originalLanguage']['#text']} "
+               f"({site_object['originalLanguage']['@xml:lang']})")
+    col2.write(f"**Publication Language:** {site_object['publicationLanguage']['#text']} "
+               f"({site_object['publicationLanguage']['@xml:lang']})")
 
     # Description and Date
     st.header("📝 Description")
-    st.markdown(f"**Date:** `{site_object['date']}`")
-    st.markdown(f"**Description:** {site_object['description']}")
+    st.write(f"**Date:** {site_object['date']}")
+    st.write(f"**Description:** {site_object['description']}")
 
     # Display geographic coordinates
     st.header("📍 Geographic Coordinates")
@@ -85,8 +64,8 @@ def app():
     
     # Additional information
     st.header("ℹ️ Additional Information")
-    st.markdown(f"**Keywords:** {site_object.get('keywords', 'N/A')}")
-    st.markdown(f"**Source Content:** {site_object.get('sourceContent', 'N/A')}")
+    st.write(f"**Keywords:** {site_object.get('keywords', 'N/A')}")
+    st.write(f"**Source Content:** {site_object.get('sourceContent', 'N/A')}")
 
     st.sidebar.info("🌟 Use the sidebar to select a different file to visualize.")
 
