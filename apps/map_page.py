@@ -21,23 +21,20 @@ def app():
     # Add fullscreen button to the map
     Fullscreen().add_to(m)
 
-    # Add different tile layers from other providers (without Stamen or Stadia)
+    # Add different tile layers from other providers (without attribution for predefined layers)
     folium.TileLayer(
         'openstreetmap', 
-        name='OpenStreetMap', 
-        attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
+        name='OpenStreetMap'  # No need for attribution for predefined layers
     ).add_to(m)
 
     folium.TileLayer(
         'cartodb positron', 
-        name='CartoDB Positron', 
-        attribution="&copy; <a href='https://carto.com/attributions'>CARTO</a>"
+        name='CartoDB Positron'  # No attribution needed
     ).add_to(m)
     
     folium.TileLayer(
         'cartodb dark_matter', 
-        name='CartoDB Dark Matter', 
-        attribution="&copy; <a href='https://carto.com/attributions'>CARTO</a>"
+        name='CartoDB Dark Matter'  # No attribution needed
     ).add_to(m)
 
     # Enable marker clustering
@@ -64,5 +61,5 @@ def app():
     # Render the map in Streamlit
     folium_static(m)
 
-
+# Call the function to render the app
 app()
