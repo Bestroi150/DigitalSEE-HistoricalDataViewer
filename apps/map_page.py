@@ -8,9 +8,20 @@ def app():
     st.title("Interactive Map with Descriptions")
     
     # Author and general information
-    st.header("Author & Publication Details")
-    st.write(f"**Author:**")
-    st.write(f"**Publication:**")
+    st.write(f"In this demonstration, we utilize a dataset that includes geographic coordinates alongside descriptive information about various locations. Each entry in our dataset comprises the following components:
+
+Location: The name of the place, providing a clear reference to the geographic feature or city.
+Latitude: The geographic latitude of the location, allowing us to pinpoint its position on a map.
+Longitude: The geographic longitude, complementing the latitude to ensure precise mapping.
+Description: A brief narrative that encapsulates the essence of the location, offering context and inviting exploration.
+Using these elements, we can create an interactive map that visually represents each location. By placing markers at the corresponding latitude and longitude, users can click on these markers to reveal the descriptive text. This functionality not only enhances user engagement but also allows for a deeper understanding of each place's significance and characteristics.
+
+This approach is particularly beneficial for applications in tourism, education, and urban planning. Users can explore diverse locations, learn about their unique features, and potentially plan visits based on the information provided. By leveraging geographic data in conjunction with descriptive insights, we create a richer experience that transforms raw data into a meaningful narrative.
+
+Explore the interactive map to discover and learn more about these fascinating places!
+
+ ")
+
     # Load the JSON data
     try:
         with open('EN.json', 'r', encoding='utf-8') as file:
