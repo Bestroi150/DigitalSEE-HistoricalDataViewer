@@ -64,5 +64,5 @@ def app():
     # Render the map in Streamlit
     folium_static(m)
 
-# Call the function to render the app
+
 app()
