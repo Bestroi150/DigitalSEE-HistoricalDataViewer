@@ -5,14 +5,13 @@ from streamlit_folium import folium_static
 
 # Configure the page and theme
 st.set_page_config(
-    page_title="DigitalSEE: Academic Visualization",
-    page_icon="🎓",
+    page_title="DigitalSEE",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 def app():
-    st.title("🎓 DigitalSEE: Academic Visualization")
+    st.title("DigitalSEE")
 
     # Load JSON data
     try:
@@ -23,7 +22,7 @@ def app():
         st.stop()
 
     # Sidebar: File selection
-    st.sidebar.header("📁 File Selection")
+    st.sidebar.header("File Selection")
     filenames = [entry['filename'] for entry in data]
     selected_file = st.sidebar.selectbox("Select a file to visualize", filenames)
 
@@ -32,7 +31,7 @@ def app():
     site_object = selected_entry['content']['siteObject']
 
     # Author and general information
-    st.header("📖 Author & Publication Details")
+    st.header("Author & Publication Details")
     st.write(f"**Author:** {site_object['author']}")
     st.write(f"**Publication:** {site_object['authorPublication']}")
 
@@ -43,12 +42,12 @@ def app():
                f"({site_object['publicationLanguage']['@xml:lang']})")
 
     # Description and Date
-    st.header("📝 Description")
+    st.header("Description")
     st.write(f"**Date:** {site_object['date']}")
     st.write(f"**Description:** {site_object['description']}")
 
     # Display geographic coordinates
-    st.header("📍 Geographic Coordinates")
+    st.header("Geographic Coordinates")
     latitude = site_object['geographicCoordinates'].get('latitude')
     longitude = site_object['geographicCoordinates'].get('longitude')
 
@@ -60,14 +59,14 @@ def app():
         folium.Marker([latitude, longitude], tooltip=site_object['nameContemporary']).add_to(m)
         folium_static(m)
     else:
-        st.warning("⚠️ Geographic coordinates not available for this entry.")
+        st.warning("Geographic coordinates not available for this entry.")
     
     # Additional information
     st.header("ℹ️ Additional Information")
     st.write(f"**Keywords:** {site_object.get('keywords', 'N/A')}")
     st.write(f"**Source Content:** {site_object.get('sourceContent', 'N/A')}")
 
-    st.sidebar.info("🌟 Use the sidebar to select a different file to visualize.")
+    st.sidebar.info("Use the sidebar to select a different file to visualize.")
 
 if __name__ == "__main__":
     app()
