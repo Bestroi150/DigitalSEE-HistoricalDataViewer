@@ -9,8 +9,8 @@ def app():
     
     # Author and general information
     st.header("Author & Publication Details")
-    st.write(f"**Author:** {site_object['author']}")
-    st.write(f"**Publication:** {site_object['authorPublication']}")
+    st.write(f"**Author:**")
+    st.write(f"**Publication:**")
     # Load the JSON data
     try:
         with open('EN.json', 'r', encoding='utf-8') as file:
