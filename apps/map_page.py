@@ -2,10 +2,12 @@ import streamlit as st
 import json
 import folium
 from streamlit_folium import folium_static
+from folium.plugins import Fullscreen, MarkerCluster
 
 def app():
-    st.title("Map with Descriptions")
+    st.title("Interactive Map with Descriptions")
 
+    # Load the JSON data
     try:
         with open('EN.json', 'r', encoding='utf-8') as file:
             data = json.load(file)
@@ -13,8 +15,23 @@ def app():
         st.error("The file EN.json was not found. Please ensure it is available in the working directory.")
         st.stop()
 
-    m = folium.Map(location=[42.0, 24.0], zoom_start=5)
+    # Initialize the base map
+    m = folium.Map(location=[42.0, 24.0], zoom_start=5, control_scale=True)
 
+    # Add fullscreen button to the map
+    Fullscreen().add_to(m)
+
+    # Create different tile layers (Map styles)
+    folium.TileLayer('openstreetmap').add_to(m)
+    folium.TileLayer('Stamen Terrain').add_to(m)
+    folium.TileLayer('Stamen Toner').add_to(m)
+    folium.TileLayer('cartodb positron').add_to(m)
+    folium.TileLayer('cartodb dark_matter').add_to(m)
+
+    # Enable marker clustering
+    marker_cluster = MarkerCluster().add_to(m)
+
+    # Loop through the data to add markers
     for entry in data:
         site_object = entry['content']['siteObject']
         latitude = site_object['geographicCoordinates'].get('latitude')
@@ -27,6 +44,13 @@ def app():
                 [latitude, longitude],
                 popup=description,
                 tooltip=f"{site_object['nameSource']} ({site_object['nameContemporary']})"
-            ).add_to(m)
+            ).add_to(marker_cluster)  # Add markers to the cluster
 
+    # Add layer control (to switch between map styles)
+    folium.LayerControl().add_to(m)
+
+    # Render the map in Streamlit
     folium_static(m)
+
+# Call the function to render the app
+app()
