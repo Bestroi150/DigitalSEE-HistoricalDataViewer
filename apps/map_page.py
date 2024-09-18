@@ -21,26 +21,12 @@ def app():
     # Add fullscreen button to the map
     Fullscreen().add_to(m)
 
-    # Create different tile layers (Map styles) with proper attribution
-    folium.TileLayer('openstreetmap', 
-                     name='OpenStreetMap', 
-                     attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors").add_to(m)
-    
-    folium.TileLayer('Stamen Terrain', 
-                     name='Stamen Terrain', 
-                     attribution="Map tiles by <a href='http://stamen.com'>Stamen Design</a>, under <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='http://openstreetmap.org'>OpenStreetMap</a>, under <a href='http://www.openstreetmap.org/copyright'>ODbL</a>.").add_to(m)
-    
-    folium.TileLayer('Stamen Toner', 
-                     name='Stamen Toner', 
-                     attribution="Map tiles by <a href='http://stamen.com'>Stamen Design</a>, under <a href='http://creativecommons.org/licenses/by/3.0'>CC BY 3.0</a>. Data by <a href='http://openstreetmap.org'>OpenStreetMap</a>, under <a href='http://www.openstreetmap.org/copyright'>ODbL</a>.").add_to(m)
-    
-    folium.TileLayer('cartodb positron', 
-                     name='CartoDB Positron', 
-                     attribution="&copy; <a href='https://carto.com/attributions'>CARTO</a>").add_to(m)
-    
-    folium.TileLayer('cartodb dark_matter', 
-                     name='CartoDB Dark Matter', 
-                     attribution="&copy; <a href='https://carto.com/attributions'>CARTO</a>").add_to(m)
+    # Create different tile layers (Map styles) without explicit attribution (predefined layers handle it internally)
+    folium.TileLayer('openstreetmap', name='OpenStreetMap').add_to(m)
+    folium.TileLayer('Stamen Terrain', name='Stamen Terrain').add_to(m)
+    folium.TileLayer('Stamen Toner', name='Stamen Toner').add_to(m)
+    folium.TileLayer('cartodb positron', name='CartoDB Positron').add_to(m)
+    folium.TileLayer('cartodb dark_matter', name='CartoDB Dark Matter').add_to(m)
 
     # Enable marker clustering
     marker_cluster = MarkerCluster().add_to(m)
