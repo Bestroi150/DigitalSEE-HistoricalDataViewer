@@ -70,4 +70,6 @@ if site_object.get('viaf'):
 st.header("Source Information")
 st.write(f"**Source Information:** {site_object.get('sourceInformation', 'N/A')}")
 
-
+# Display source content key
+st.header("Source Content")
+st.write(f"**Source Content:** {site_object.get('sourceContent', 'N/A')}")
