@@ -41,11 +41,6 @@ This demonstration shows the potential of the dataset at hand to be used in a GI
         name='CartoDB Positron'  # No attribution needed
     ).add_to(m)
     
-    folium.TileLayer(
-        'cartodb dark_matter', 
-        name='CartoDB Dark Matter'  # No attribution needed
-    ).add_to(m)
-
     # Enable marker clustering
     marker_cluster = MarkerCluster().add_to(m)
 
