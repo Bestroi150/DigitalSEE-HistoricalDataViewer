@@ -7,8 +7,7 @@ app = MultiApp()
 
 # Add each application
 app.add_app("Visualization", visualize.app)
-app.add_app("Statistics", statistics.app)
-app.add_app("Map with Descriptions", map_page.app)
+app.add_app("Map", map_page.app)
 
 # Run the main app
 app.run()
