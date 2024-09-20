@@ -1,6 +1,6 @@
 import streamlit as st
 from multiapp import MultiApp
-from apps import visualize, statistics, map_page
+from apps import visualize, map_page
 
 # Create a multi-page app
 app = MultiApp()
