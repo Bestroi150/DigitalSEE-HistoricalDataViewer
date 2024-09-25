@@ -1,13 +1,32 @@
 import streamlit as st
-from multiapp import MultiApp
-from apps import visualize, map_page
 
-# Create a multi-page app
-app = MultiApp()
+class MultiApp:
+    def __init__(self):
+        self.apps = []
 
-# Add each application
-app.add_app("Visualization", visualize.app)
-app.add_app("Map", map_page.app)
+    def add_app(self, title, func):
+        self.apps.append({
+            "title": title,
+            "function": func
+        })
 
-# Run the main app
-app.run()
+    def run(self):
+        # Initialize session state if not already initialized
+        if 'selected_app' not in st.session_state:
+            st.session_state.selected_app = self.apps[0]['title']
+
+        # Sidebar app selection
+        selected_title = st.sidebar.selectbox(
+            'Navigation',
+            [app['title'] for app in self.apps],
+            index=[app['title'] for app in self.apps].index(st.session_state.selected_app)
+        )
+
+        # Update session state with selected app
+        st.session_state.selected_app = selected_title
+
+        # Run the selected app's function
+        for app in self.apps:
+            if app['title'] == selected_title:
+                app['function']()
+                break
