@@ -3,7 +3,7 @@ primaryColor = "#2C3E50"
 backgroundColor = "#F9F9F9"  
 secondaryBackgroundColor = "#FFFFFF"
 textColor = "#333333" 
-font = "monospace"  
+ 
 
 [footer]
 text = "Powered by DigitalSEE"
