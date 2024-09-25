@@ -1,6 +1,13 @@
 [theme]
-primaryColor="#6eb52f"
-backgroundColor="#f0f0f5"
-secondaryBackgroundColor="#e0e0ef"
-textColor="#262730"
-font="monospace"
+primaryColor = "#2C3E50"  
+backgroundColor = "#F9F9F9" 
+secondaryBackgroundColor = "#FFFFFF"  
+textColor = "#333333"  
+font = "Georgia"  
+
+[header]
+title = "DigitalSEE"
+subtitle = "Exploring Historical Data"
+
+[footer]
+text = "Powered by DigitalSEE"
