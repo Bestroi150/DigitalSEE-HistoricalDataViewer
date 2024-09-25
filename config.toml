@@ -1,13 +1,9 @@
 [theme]
-primaryColor = "#2C3E50"  # A serious, dark blue color
-backgroundColor = "#F9F9F9"  # A light grey/white background
-secondaryBackgroundColor = "#FFFFFF"  # Slightly different from main background
-textColor = "#333333"  # Dark grey for readability
-font = "Georgia"  # Serif font, suitable for academic theme
-
-[header]
-title = "DigitalSEE: Academic Visualization"
-subtitle = "Exploring Scholarly Data"
+primaryColor = "#2C3E50"  
+backgroundColor = "#F9F9F9"  
+secondaryBackgroundColor = "#FFFFFF"
+textColor = "#333333" 
+font = "monospace"  
 
 [footer]
 text = "Powered by DigitalSEE"
