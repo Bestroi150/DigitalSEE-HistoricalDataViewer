@@ -1210,6 +1210,7 @@
                     "startDate": null,
                     "endDate": null
                 },
+                "authorPublication":"Hiltebrandt",
                 "ageContemporary": "Late Antiquity",
                 "originalLanguage": {
                     "@xml:lang": "deu",
@@ -1434,6 +1435,7 @@
                     "startDate": null,
                     "endDate": null
                 },
+                "authorPublication":"Tafferner",
                 "ageContemporary": "Late Antiquity",
                 "originalLanguage": {
                     "@xml:lang": "lat",
