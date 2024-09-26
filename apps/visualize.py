@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import folium
 from streamlit_folium import folium_static
+import requests
 
 # Configure the page and theme
 st.set_page_config(
@@ -13,12 +14,13 @@ st.set_page_config(
 def app():
     st.title("DigitalSEE")
 
-    # Load JSON data
     try:
-        with open('EN.json', 'r', encoding='utf-8') as file:
-            data = json.load(file)
-    except FileNotFoundError:
-        st.error("⚠️ The file `EN.json` was not found. Please ensure it is available in the working directory.")
+        url = 'https://raw.githubusercontent.com/Bestroi150/DigitalSEE/main/JSON/EN.json'
+        response = requests.get(url)
+        response.raise_for_status()  
+        data = response.json()
+    except requests.exceptions.RequestException as e:
+        st.error(f"An error occurred while fetching the file: {e}")
         st.stop()
 
     # Sidebar: File selection
