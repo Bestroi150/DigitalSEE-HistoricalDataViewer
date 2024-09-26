@@ -3,6 +3,7 @@ import json
 import folium
 from streamlit_folium import folium_static
 from folium.plugins import Fullscreen, MarkerCluster
+import requests
 
 def app():
     st.title("Interactive Map with Descriptions")
@@ -17,10 +18,12 @@ Description: A brief narrative that encapsulates the essence of the location, of
 This demonstration shows the potential of the dataset at hand to be used in a GIS-based software suitable for Digital Archaeology research""")
 
     try:
-        with open('EN.json', 'r', encoding='utf-8') as file:
-            data = json.load(file)
-    except FileNotFoundError:
-        st.error("The file EN.json was not found. Please ensure it is available in the working directory.")
+        url = 'https://raw.githubusercontent.com/Bestroi150/DigitalSEE/main/JSON/EN.json'
+        response = requests.get(url)
+        response.raise_for_status()  
+        data = response.json()
+    except requests.exceptions.RequestException as e:
+        st.error(f"An error occurred while fetching the file: {e}")
         st.stop()
 
    
